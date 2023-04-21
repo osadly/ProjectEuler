@@ -1,5 +1,6 @@
 #23
 import math
+import sys
 
 def isPrime(n):
     x=int(math.sqrt(n))
@@ -23,22 +24,14 @@ perfects=[]
 abundants=[]
 for i in range(2,28124):
     div=[]
-    #if isPrime(i):
-    #    primes.append(i)
-    #    deficients.append(i)
+    if isPrime(i):
+        primes.append(i)
+        deficients.append(i)
         #print(i,[1])
         #print(i, " prime & deficient")
-    #    continue
+        continue
     div=getAllDivisors(i)
     #print(i,sorted(list(set(div))))
-    if i < sum(sorted(list(set(div)))):
-        #print(i, " deficient")
-        abundants.append(i)
-
-print(len(abundants))
-
-#above is correct - no need to modify - think of updates for the code below
-
     #if i > sum(sorted(list(set(div)))):
         #print(i, " deficient")
     #    deficients.append(i)
@@ -48,28 +41,41 @@ print(len(abundants))
     #else:
         #print(i," abundant")
     #    abundants.append(i)
-sumAbundants=[]
-for i in range(len(abundants)):
-    for j in range(len(abundants)):
-        sumAbundants.append(abundants[i]+abundants[j])
+    if i < sum(sorted(list(set(div)))):
+        #print(i, " deficient")
+        abundants.append(i)
+
+#for abn in abundants:
+#    print(abn)
+
+#sys.exit()
+
+
+
+#sumAbundants=[]
+#for i in range(len(abundants)):
+#    for j in range(i,len(abundants)):
+#        sumAbundants.append(abundants[i]+abundants[j])
+
+#above is correct - no need to modify - think of updates for the code below
 
 #sumAbundantsSet=set(sumAbundants)
-print(len(sumAbundants))
+#print(len(sumAbundants))
 
 
-ret=sum(list(range(1,24)))
-print(ret)
-for i in range(25,28124):
-    b=True
+#ret=sum(list(range(1,24)))
+#print(ret)
+#for i in range(25,28124):
+#    b=True
     #print("testing for ",i)
-    for j in range(len(abundants)):
-        if i>abundants[j] and (i-abundants[j]) in abundants:
+#    for j in range(len(abundants)):
+#        if i>abundants[j] and (i-abundants[j]) in abundants:
             #print("--->",abundants[j])
-            b=False
-            break
-    if b:
-        ret+=i
-print(ret)
+#            b=False
+#            break
+#    if b:
+#        ret+=i
+#print(ret)
     
 
 #print(primes)
